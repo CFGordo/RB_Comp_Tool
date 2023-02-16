@@ -298,7 +298,7 @@ if stit == 'Rush Success Rate (successful rush per attempt)':
     stat = 'Rush Success Rate'
 if stit == 'Successful Rushes per Game':
     stat = 'Succ Rushes perG'
-if stit == 'Big Rush Rate (rush >= 12yds per attempt':
+if stit == 'Big Rush Rate (rush >= 12yds per attempt)':
     stat = 'Big Rush Rate'
 if stit == 'Big Rushes per Game (rushes >= 12yds)':
     stat = 'Big Rushes perG'
