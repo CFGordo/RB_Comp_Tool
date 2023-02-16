@@ -262,8 +262,8 @@ data2 = draw_grid(
     max_height=350,
     auto_height=True
     )
-st.markdown("<p class='small-font'> Hint: You can sort and filter columns to find your own Comps. Increase 'Number of "
-            "Comps' above the table to get more players. </p>")
+st.caption("Hint: You can sort and filter columns to find your own Comps. Increase 'Number of "
+           "Comps' above the table to get more players.")
 cell = data2["selected_rows"]
 cellz = pd.DataFrame(cell)
 cellar = rb_comp_df.loc[rb_comp_df['Player ID'] == player2]
