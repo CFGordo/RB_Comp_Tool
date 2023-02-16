@@ -277,7 +277,7 @@ measures = ['Rush Success Rate', 'Succ Rushes perG', 'Big Rush Rate', 'Big Rushe
             'Rush PPA perG', 'Rec PPA perG', 'Total PPA perG', 'PPA per Rush Att', 'PPA per Target',
             'PPA per Opportunity']
 pleasures = ['Rush Success Rate (successful rush per attempt)', 'Successful Rushes per Game',
-             'Big Rush Rate (rush >= 12yds per attempt', 'Big Rushes per Game (rushes >= 12yds)',
+             'Big Rush Rate (rush >= 12yds per attempt)', 'Big Rushes per Game (rushes >= 12yds)',
              'Big Rush Yards per Game (yds on big rushes, not including first 12 yds)',
              'Target Success Rate (successful reception per target)',
              'Successful Targets per Game', 'Big Reception Rate (reception >=12yds per reception)',
