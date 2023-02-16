@@ -372,3 +372,6 @@ def interactivePlot2():
 
 
 interactivePlot2()
+st.text("")
+st.caption("Data= collegefootballdata.com, cfbfastR, nflverse")
+st.caption("Author= @CFGordon")
