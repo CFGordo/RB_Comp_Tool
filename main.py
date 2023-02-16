@@ -363,9 +363,9 @@ def interactivePlot2():
         paper_bgcolor="rgb(0,0,0)"
     )
     plot.update_traces(marker={'size': 12})
-    plot.add_trace(px.scatter(messy.loc[messy['NFL Draft Pick'] > 0].dropna(), x='Year from Highschool', y=stat, trendline='ols',
-                              trendline_scope='overall', template='simple_white').update_layout(plot_bgcolor="rgb(0,0,0)",
-                                                                                               paper_bgcolor="rgb(0,0,0)").update_traces(marker={
+    plot.add_trace(px.scatter(messy.loc[messy['NFL Draft Pick'] > 0].dropna(), x='Year from Highschool', y=stat,
+                              template='simple_white').update_layout(plot_bgcolor="rgb(0,0,0)",
+                                                                     paper_bgcolor="rgb(0,0,0)").update_traces(marker={
                                                                                                         'size': 2,
                                                                                                         'color': 'gray'}).data[0])
     st.plotly_chart(plot)
