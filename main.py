@@ -56,6 +56,7 @@ data = draw_grid(
     fit_columns=False,
     selection='single',  # or 'single', or None
     use_checkbox='True',  # or False by default
+    filterable=False,
     max_height=400
 )
 selected = data["selected_rows"]
@@ -102,6 +103,7 @@ datas = draw_grid(
     selection='multiple',  # or 'single', or None
     pre_selected_rows=[0, 1, 2, 3, 4, 5, 7],
     use_checkbox='True',  # or False by default
+    filterable=False,
     auto_height=True,
     max_height=800
 )
