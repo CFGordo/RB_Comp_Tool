@@ -313,8 +313,7 @@ if stit == 'PPA per Target(version of EPA, per collegefootballdata.com)':
     stat = 'PPA per Target'
 if stit == 'PPA per Opportunity (version of EPA, per collegefootballdata.com)':
     stat = 'PPA per Opportunity'
-else:
-    stat = 'Rush Success Rate'
+
 
 statable = cellary[['Year from Highschool', 'Name', 'Player ID', stat]]
 statable['Year from Highschool'] = statable['Year from Highschool'].astype(int)
