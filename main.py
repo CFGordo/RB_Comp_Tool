@@ -37,22 +37,23 @@ formatter = {
     'Team': ('Team', {'width': 55}),
     'Games Played': ('Games Played', {'width': 60, 'cellStyle': agstyler.highlight(Color.RED_LIGHT.value,
                                                                                    condition_two_value)}),
-    'Rushing Efficiency': ('Rushing Efficiency', {**PRECISION_TWO, 'width': 70, 'cellStyle': agstyler.highlight(Color.GREEN_LIGHT.value,
+    'Rushing Efficiency': ('Rushing Efficiency', {'width': 70, 'cellStyle': agstyler.highlight(Color.GREEN_LIGHT.value,
                                                                                                                 condition_one_value)}),
-    'Receiving Efficiency': ('Receiving Efficiency', {**PRECISION_TWO, 'width': 70, 'cellStyle': agstyler.highlight(Color.GREEN_LIGHT.value,
+    'Receiving Efficiency': ('Receiving Efficiency', {'width': 70, 'cellStyle': agstyler.highlight(Color.GREEN_LIGHT.value,
                                                                                                                 condition_one_value)}),
-    'Rushing Explosiveness': ('Rushing Explosiveness', {**PRECISION_TWO, 'width': 70, 'cellStyle': agstyler.highlight(Color.GREEN_LIGHT.value,
+    'Rushing Explosiveness': ('Rushing Explosiveness', {'width': 70, 'cellStyle': agstyler.highlight(Color.GREEN_LIGHT.value,
                                                                                                                 condition_one_value)}),
-    'Receiving Explosiveness': ('Receiving Explosiveness', {**PRECISION_TWO, 'width': 70, 'cellStyle': agstyler.highlight(Color.GREEN_LIGHT.value,
+    'Receiving Explosiveness': ('Receiving Explosiveness', {'width': 70, 'cellStyle': agstyler.highlight(Color.GREEN_LIGHT.value,
                                                                                                                 condition_one_value)}),
+    'Draft Year': ('Draft Class', {'width': 60})
 }
 st.markdown("Select Season to Compare:")
 
 data = draw_grid(
     player_comp_df[['Season', 'Player ID', 'Team', 'Games Played', 'Rushing Efficiency', 'Receiving Efficiency',
-                    'Rushing Explosiveness', 'Receiving Explosiveness']].head(),
+                    'Rushing Explosiveness', 'Receiving Explosiveness', 'Draft Year']].round(decimals=1).head(),
     formatter=formatter,
-    fit_columns=True,
+    fit_columns=False,
     selection='single',  # or 'single', or None
     use_checkbox='True',  # or False by default
     max_height=400
@@ -97,7 +98,7 @@ st.markdown("Select Criteria:")
 datas = draw_grid2(
     criteria,
     formatter=fromage,
-    fit_columns=True,
+    fit_columns=False,
     selection='multiple',  # or 'single', or None
     pre_selected_rows=[0, 1, 2, 3, 4, 5, 7],
     use_checkbox='True',  # or False by default
