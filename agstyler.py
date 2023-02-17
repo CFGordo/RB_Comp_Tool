@@ -62,52 +62,6 @@ def draw_grid(
         custom_css=css
     )
 
-def draw_grid2(
-        df,
-        formatter: dict = None,
-        selection="multiple",
-        use_checkbox=False,
-        pre_selected_rows: list = None,
-        fit_columns=False,
-        theme="streamlit",
-        max_height: int = MAX_TABLE_HEIGHT,
-        wrap_text: bool = True,
-        auto_height: bool = False,
-        grid_options: dict = None,
-        key=None,
-        css: dict = None
-):
-
-    gb = GridOptionsBuilder()
-    gb.configure_default_column(
-        filterable=True,
-        groupable=False,
-        editable=False,
-        wrapText=wrap_text,
-        autoHeight=auto_height,
-        wrapHeaderText=True,
-    )
-
-    if grid_options is not None:
-        gb.configure_grid_options(**grid_options)
-
-    for latin_name, (cyr_name, style_dict) in formatter.items():
-        gb.configure_column(latin_name, header_name=cyr_name, **style_dict)
-
-    gb.configure_selection(selection_mode=selection, use_checkbox=use_checkbox, pre_selected_rows=pre_selected_rows)
-
-    return AgGrid(
-        df,
-        gridOptions=gb.build(),
-        update_mode=GridUpdateMode.SELECTION_CHANGED | GridUpdateMode.VALUE_CHANGED,
-        allow_unsafe_jscode=True,
-        fit_columns_on_grid_load=fit_columns,
-        height=460,
-        theme=theme,
-        key=key,
-        custom_css=css
-    )
-
 def highlight(color, condition):
     code = f"""
         function(params) {{
