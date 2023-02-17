@@ -350,7 +350,7 @@ def interactivePlot2():
                                                                                                         'color': 'gray'}).data[0])
     st.plotly_chart(plot)
 
-
+st.text(rb_comp_df.dtypes)
 interactivePlot2()
 st.text("")
 st.caption("Data= collegefootballdata.com, cfbfastR, nflverse")
