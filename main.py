@@ -37,13 +37,13 @@ formatter = {
     'Team': ('Team', {'width': 55}),
     'Games Played': ('G', {'width': 5, 'cellStyle': agstyler.highlight(Color.RED_LIGHT.value,
                                                                                    condition_two_value)}),
-    'Rushing Efficiency': ('Rushing Eff', {'width': 40, 'cellStyle': agstyler.highlight(Color.GREEN_LIGHT.value,
+    'Rushing Efficiency': ('Rush Eff', {'width': 40, 'cellStyle': agstyler.highlight(Color.GREEN_LIGHT.value,
                                                                                                                 condition_one_value)}),
-    'Receiving Efficiency': ('Receiving Eff', {'width': 40, 'cellStyle': agstyler.highlight(Color.GREEN_LIGHT.value,
+    'Receiving Efficiency': ('Rec Eff', {'width': 40, 'cellStyle': agstyler.highlight(Color.GREEN_LIGHT.value,
                                                                                                                 condition_one_value)}),
-    'Rushing Explosiveness': ('Rushing Exp', {'width': 40, 'cellStyle': agstyler.highlight(Color.GREEN_LIGHT.value,
+    'Rushing Explosiveness': ('Rush Exp', {'width': 40, 'cellStyle': agstyler.highlight(Color.GREEN_LIGHT.value,
                                                                                                                 condition_one_value)}),
-    'Receiving Explosiveness': ('Receiving Exp', {'width': 40, 'cellStyle': agstyler.highlight(Color.GREEN_LIGHT.value,
+    'Receiving Explosiveness': ('Rec Exp', {'width': 40, 'cellStyle': agstyler.highlight(Color.GREEN_LIGHT.value,
                                                                                                                 condition_one_value)}),
     'Draft Year': ('Draft Class', {'width': 50})
 }
