@@ -12,16 +12,27 @@ st.text("")
 rb_comp_df_link = st.secrets["rb_comp_df_url"]
 rb_comp_df_csv = rb_comp_df_link.replace('/edit#gid=', '/export?format=csv&gid=')
 rb_comp_df = pd.read_csv(rb_comp_df_csv)
+
 rb_comp_df['Receiving Best'] = rb_comp_df[['Receiving Efficiency', 'Receiving Explosiveness']].max(axis=1)
 rb_comp_df['comp_sp'] = rb_comp_df['SP Rating'] - rb_comp_df['SP Rating'].min(axis=0)
 rb_comp_df['comp_talent'] = rb_comp_df['Team Talent']/100
 rb_comp_df['comp_height'] = rb_comp_df['Height'].fillna(71.71)
-rb_comp_df['comp_height'] = rb_comp_df['comp_height']*3
+rb_comp_df['comp_height'] = rb_comp_df['Height']*3
 rb_comp_df['pass_to_rush'] = (rb_comp_df['Rushing Explosiveness'] + rb_comp_df['Rushing Efficiency'])-(rb_comp_df['Receiving Explosiveness'] + rb_comp_df['Receiving Efficiency'])
 rb_comp_df['steady_to_explosive'] = (rb_comp_df['Receiving Efficiency'] + rb_comp_df['Rushing Efficiency'])-(rb_comp_df['Rushing Explosiveness'] + rb_comp_df['Receiving Explosiveness'])
 rb_comp_df['pr_helper'] = np.where(rb_comp_df['pass_to_rush'] <0, -1, 1)
 rb_comp_df['se_helper'] = np.where(rb_comp_df['steady_to_explosive'] <0, -1, 1)
 
+droids = [['comp_talent', 'comp_sp', 'comp_height', 'Receiving Best',
+           'Weight', 'Rushing Explosiveness', 'Rushing Efficiency',
+           'Receiving Explosiveness', 'Receiving Efficiency',
+           'steady_to_explosive', 'pass_to_rush', 'comp_ovr']]
+
+for d in droids:
+    rb_comp_df[d].fillna(0, inplace=True)
+
+
+rb_comp_df['model_score'] = rb_comp_df.groupby(['Player ID'])['max_model'].transform('max')
 rb_comp_df.sort_values(by=['Season', 'model_score'], ascending=[False, False], inplace=True)
 
 player1 = st.selectbox('Select PLAYER!', rb_comp_df['Name'].unique())
@@ -251,8 +262,8 @@ data2 = draw_grid(
     max_height=350,
     auto_height=True
     )
-st.caption("Hint: You can sort and filter columns to find your own Comps. Increase 'Number of "
-           "Comps' above the table to get more players.")
+st.markdown("<p class='small-font'> Hint: You can sort and filter columns to find your own Comps. Increase 'Number of "
+            "Comps' above the table to get more players. </p>")
 cell = data2["selected_rows"]
 cellz = pd.DataFrame(cell)
 cellar = rb_comp_df.loc[rb_comp_df['Player ID'] == player2]
@@ -266,7 +277,7 @@ measures = ['Rush Success Rate', 'Succ Rushes perG', 'Big Rush Rate', 'Big Rushe
             'Rush PPA perG', 'Rec PPA perG', 'Total PPA perG', 'PPA per Rush Att', 'PPA per Target',
             'PPA per Opportunity']
 pleasures = ['Rush Success Rate (successful rush per attempt)', 'Successful Rushes per Game',
-             'Big Rush Rate (rush >= 12yds per attempt)', 'Big Rushes per Game (rushes >= 12yds)',
+             'Big Rush Rate (rush >= 12yds per attempt', 'Big Rushes per Game (rushes >= 12yds)',
              'Big Rush Yards per Game (yds on big rushes, not including first 12 yds)',
              'Target Success Rate (successful reception per target)',
              'Successful Targets per Game', 'Big Reception Rate (reception >=12yds per reception)',
@@ -287,7 +298,7 @@ if stit == 'Rush Success Rate (successful rush per attempt)':
     stat = 'Rush Success Rate'
 if stit == 'Successful Rushes per Game':
     stat = 'Succ Rushes perG'
-if stit == 'Big Rush Rate (rush >= 12yds per attempt)':
+if stit == 'Big Rush Rate (rush >= 12yds per attempt':
     stat = 'Big Rush Rate'
 if stit == 'Big Rushes per Game (rushes >= 12yds)':
     stat = 'Big Rushes perG'
@@ -321,8 +332,6 @@ if stit == 'PPA per Target(version of EPA, per collegefootballdata.com)':
     stat = 'PPA per Target'
 if stit == 'PPA per Opportunity (version of EPA, per collegefootballdata.com)':
     stat = 'PPA per Opportunity'
-else:
-    stat = 'Rush Success Rate'
 
 statable = cellary[['Year from Highschool', 'Name', 'Player ID', stat]]
 statable['Year from Highschool'] = statable['Year from Highschool'].astype(int)
@@ -354,18 +363,12 @@ def interactivePlot2():
         paper_bgcolor="rgb(0,0,0)"
     )
     plot.update_traces(marker={'size': 12})
-    plot.add_trace(px.scatter(rb_comp_df.loc[rb_comp_df['NFL Draft Pick'] > 0].dropna(), x='Year from Highschool', y=stat,
-                              template='simple_white').update_layout(plot_bgcolor="rgb(0,0,0)",
-                                                                     paper_bgcolor="rgb(0,0,0)").update_traces(marker={
+    plot.add_trace(px.scatter(messy.loc[messy['NFL Draft Pick'] > 0].dropna(), x='Year from Highschool', y=stat, trendline='ols',
+                              trendline_scope='overall', template='simple_white').update_layout(plot_bgcolor="rgb(0,0,0)",
+                                                                                               paper_bgcolor="rgb(0,0,0)").update_traces(marker={
                                                                                                         'size': 2,
                                                                                                         'color': 'gray'}).data[0])
     st.plotly_chart(plot)
 
 
-st.text(rb_comp_df['NFL Draft Pick'].dtypes)
-
-
 interactivePlot2()
-st.text("")
-st.caption("Data= collegefootballdata.com, cfbfastR, nflverse")
-st.caption("Author= @CFGordon")
