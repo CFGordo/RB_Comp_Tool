@@ -372,7 +372,7 @@ def interactivePlot2():
     st.plotly_chart(plot)
 
 
-st.table(rb_comp_df[['Year from Highschool','NFL Draft Pick']].dtype())
+st.text(rb_comp_df[['Year from Highschool','NFL Draft Pick']].dtype())
 
 
 interactivePlot2()
