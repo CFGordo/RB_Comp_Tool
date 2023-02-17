@@ -13,26 +13,7 @@ st.text("")
 rb_comp_df_link = st.secrets["rb_comp_df_url"]
 rb_comp_df_csv = rb_comp_df_link.replace('/edit#gid=', '/export?format=csv&gid=')
 rb_comp_df = pd.read_csv(rb_comp_df_csv)
-rb_comp_df['Receiving Best'] = rb_comp_df[['Receiving Efficiency', 'Receiving Explosiveness']].max(axis=1)
-rb_comp_df['comp_sp'] = rb_comp_df['SP Rating'] - rb_comp_df['SP Rating'].min(axis=0)
-rb_comp_df['comp_talent'] = rb_comp_df['Team Talent']/100
-rb_comp_df['comp_height'] = rb_comp_df['Height'].fillna(71.71)
-rb_comp_df['comp_height'] = rb_comp_df['Height']*3
-rb_comp_df['pass_to_rush'] = (rb_comp_df['Rushing Explosiveness'] + rb_comp_df['Rushing Efficiency'])-(rb_comp_df['Receiving Explosiveness'] + rb_comp_df['Receiving Efficiency'])
-rb_comp_df['steady_to_explosive'] = (rb_comp_df['Receiving Efficiency'] + rb_comp_df['Rushing Efficiency'])-(rb_comp_df['Rushing Explosiveness'] + rb_comp_df['Receiving Explosiveness'])
-rb_comp_df['pr_helper'] = np.where(rb_comp_df['pass_to_rush'] <0, -1, 1)
-rb_comp_df['se_helper'] = np.where(rb_comp_df['steady_to_explosive'] <0, -1, 1)
 
-droids = [['comp_talent', 'comp_sp', 'comp_height', 'Receiving Best',
-           'Weight', 'Rushing Explosiveness', 'Rushing Efficiency',
-           'Receiving Explosiveness', 'Receiving Efficiency',
-           'steady_to_explosive', 'pass_to_rush', 'comp_ovr']]
-
-for d in droids:
-    rb_comp_df[d].fillna(0, inplace=True)
-
-
-rb_comp_df['model_score'] = rb_comp_df.groupby(['Player ID'])['max_model'].transform('max')
 
 rb_comp_df.sort_values(by=['Season', 'model_score'], ascending=[False, False], inplace=True)
 
