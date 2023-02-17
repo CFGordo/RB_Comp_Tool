@@ -22,6 +22,7 @@ def draw_grid(
         use_checkbox=False,
         pre_selected_rows: list = None,
         fit_columns=False,
+        filterable: bool = True,
         theme="streamlit",
         max_height: int = MAX_TABLE_HEIGHT,
         wrap_text: bool = True,
@@ -33,7 +34,7 @@ def draw_grid(
 
     gb = GridOptionsBuilder.from_dataframe(df, formatter=formatter)
     gb.configure_default_column(
-        filterable=True,
+        filterable=filterable,
         groupable=False,
         editable=False,
         wrapText=wrap_text,
