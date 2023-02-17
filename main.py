@@ -350,7 +350,10 @@ def interactivePlot2():
                                                                                                         'color': 'gray'}).data[0])
     st.plotly_chart(plot)
 
-st.text(rb_comp_df.dtypes)
+
+st.text(rb_comp_df['NFL Draft Pick'].dtypes)
+
+
 interactivePlot2()
 st.text("")
 st.caption("Data= collegefootballdata.com, cfbfastR, nflverse")
