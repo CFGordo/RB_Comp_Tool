@@ -69,8 +69,8 @@ else:
     player4 = player_comp_df.loc[player_comp_df['Season'] == player_comp_df['Season'].max()]
     player8 = player4['Season'].unique()
     player3 = int(player8)
-    player11 = player4.loc[player4['Player ID'] == player4['Player ID'].min()]
-    player2 = int(player11['Player ID'])
+    player4 = player4.loc[player4['Player ID'] == player4['Player ID'].min()]
+    player2 = int(player4['Player ID'])
 playerSZN_comp_df = player_comp_df.loc[player_comp_df['Player ID'] == player2]
 playerSZN_comp_df = playerSZN_comp_df.loc[playerSZN_comp_df['Season'] == player3]
 
@@ -108,10 +108,10 @@ datas = draw_grid(
     max_height=800
 )
 selection = datas["selected_rows"]
-selectionz = pd.DataFrame(selection)
+selections = pd.DataFrame(selection)
 selecto = {"Criteria": ["unk"], "Recomended?": ["Yaas Queen"], "Notes": ["Nicky"]}
 selector = pd.DataFrame(selecto)
-selections = pd.concat([selector, selectionz])
+selections = pd.concat([selector, selections])
 
 Height = (selections['Criteria'].eq('Height')).any()
 Weight = (selections['Criteria'].eq('Weight')).any()
@@ -252,9 +252,9 @@ st.caption("Hint: You can sort and filter columns to find your own Comps. Increa
 cell = data2["selected_rows"]
 cellz = pd.DataFrame(cell)
 cellar = rb_comp_df.loc[rb_comp_df['Player ID'] == player2]
-cellars = pd.concat([cellar, cellz])
-celly = cellars['Player ID'].drop_duplicates()
-cellary = pd.merge(celly, rb_comp_df, on='Player ID', how='left')
+cellar = pd.concat([cellar, cellz])
+cellar = cellar['Player ID'].drop_duplicates()
+cellary = pd.merge(cellar, rb_comp_df, on='Player ID', how='left')
 
 measures = ['Rush Success Rate', 'Succ Rushes perG', 'Big Rush Rate', 'Big Rushes perG',
             'Big Rush Yards perG', 'Target Success Rate',  'Succ Targs perG', 'Big Rec Rate', 'Big Recs perG',
