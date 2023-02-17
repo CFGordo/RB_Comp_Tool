@@ -50,8 +50,8 @@ formatter = {
 st.markdown("Select Season to Compare:")
 
 data = draw_grid(
-    player_comp_df[['Season', 'Player ID', 'Team', 'Games Played', 'Rushing Efficiency', 'Receiving Efficiency',
-                    'Rushing Explosiveness', 'Receiving Explosiveness', 'Draft Year']].round(decimals=1).head(),
+    player_comp_df[['Season', 'Team', 'Games Played', 'Rushing Efficiency', 'Receiving Efficiency',
+                    'Rushing Explosiveness', 'Receiving Explosiveness', 'Draft Year', 'Player ID']].round(decimals=1).head(),
     formatter=formatter,
     fit_columns=False,
     selection='single',  # or 'single', or None
