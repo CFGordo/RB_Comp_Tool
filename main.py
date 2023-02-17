@@ -12,7 +12,14 @@ st.text("")
 rb_comp_df_link = st.secrets["rb_comp_df_url"]
 rb_comp_df_csv = rb_comp_df_link.replace('/edit#gid=', '/export?format=csv&gid=')
 rb_comp_df = pd.read_csv(rb_comp_df_csv)
-rb_comp_df['Year from Highschool'] = rb_comp_df['Year from Highschool'].astype(int)
+droids = [['comp_talent', 'comp_sp', 'comp_height', 'Receiving Best',
+           'Weight', 'Rushing Explosiveness', 'Rushing Efficiency',
+           'Receiving Explosiveness', 'Receiving Efficiency',
+           'steady_to_explosive', 'pass_to_rush', 'comp_ovr']]
+
+for d in droids:
+    rb_comp_df[d].fillna(0, inplace=True)
+
 rb_comp_df.sort_values(by=['Season', 'model_score'], ascending=[False, False], inplace=True)
 
 player1 = st.selectbox('Select PLAYER!', rb_comp_df['Name'].unique())
