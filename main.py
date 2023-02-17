@@ -372,7 +372,11 @@ def interactivePlot2():
     st.plotly_chart(plot)
 
 
-st.text(rb_comp_df[['Year from Highschool', 'NFL Draft Pick']].dtypes)
+st.text(rb_comp_df[['Year from Highschool', 'NFL Draft Pick', 'Rush Success Rate', 'Succ Rushes perG', 'Big Rush Rate', 'Big Rushes perG',
+            'Big Rush Yards perG', 'Target Success Rate',  'Succ Targs perG', 'Big Rec Rate', 'Big Recs perG',
+            'Big Rec Yards perG', 'YTMRA perG', 'YTMPA perG', 'YTMA perG',
+            'Rush PPA perG', 'Rec PPA perG', 'Total PPA perG', 'PPA per Rush Att', 'PPA per Target',
+            'PPA per Opportunity']].dtypes)
 
 
 interactivePlot2()
