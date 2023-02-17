@@ -32,7 +32,7 @@ condition_one_value = "params.value >= 9"
 condition_two_value = "params.value < 5"
 
 formatter = {
-    'Season': ('Year', {'width': 60}),
+    'Season': ('Year', {'width': 50}),
     'Player ID': ('Player ID', {'width': 70}),
     'Team': ('Team', {'width': 55}),
     'Games Played': ('Games Played', {'width': 60, 'cellStyle': agstyler.highlight(Color.RED_LIGHT.value,
@@ -45,7 +45,7 @@ formatter = {
                                                                                                                 condition_one_value)}),
     'Receiving Explosiveness': ('Receiving Explosiveness', {'width': 70, 'cellStyle': agstyler.highlight(Color.GREEN_LIGHT.value,
                                                                                                                 condition_one_value)}),
-    'Draft Year': ('Draft Class', {'width': 60})
+    'Draft Year': ('Draft Class', {'width': 50})
 }
 st.markdown("Select Season to Compare:")
 
