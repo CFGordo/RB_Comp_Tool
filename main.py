@@ -321,7 +321,7 @@ statable['Year from Highschool'] = statable['Year from Highschool'].astype(int)
 statable['Name'] = statable['Name'].astype(str)
 statable['Player ID'] = statable['Player ID'].astype(int)
 statable[stat] = statable[stat].astype(float)
-
+st.table(statable[stat])
 restatable = pd.pivot_table(statable, values=stat, index=['Name', 'Player ID'],
                             columns=['Year from Highschool'], aggfunc=np.sum)
 restatable.reset_index(level=1, inplace=True)
