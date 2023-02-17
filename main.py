@@ -343,7 +343,7 @@ def interactivePlot2():
         paper_bgcolor="rgb(0,0,0)"
     )
     plot.update_traces(marker={'size': 12})
-    plot.add_trace(px.scatter(messy.loc[messy['NFL Draft Pick'] > 0].dropna(), x='Year from Highschool', y=stat,
+    plot.add_trace(px.scatter(rb_comp_df.loc[rb_comp_df['NFL Draft Pick'] > 0].dropna(), x='Year from Highschool', y=stat,
                               template='simple_white').update_layout(plot_bgcolor="rgb(0,0,0)",
                                                                      paper_bgcolor="rgb(0,0,0)").update_traces(marker={
                                                                                                         'size': 2,
