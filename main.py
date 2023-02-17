@@ -278,7 +278,7 @@ pleasures = ['Rush Success Rate (successful rush per attempt)', 'Successful Rush
              'PPA per Opportunity (version of EPA, per collegefootballdata.com)']
 
 stit = st.selectbox('Select Stat!', pleasures)
-
+st.caption("Overlayed above Drafted Players")
 if stit == 'Rush Success Rate (successful rush per attempt)':
     stat = 'Rush Success Rate'
 if stit == 'Successful Rushes per Game':
