@@ -352,7 +352,7 @@ def interactivePlot2():
     st.plotly_chart(plot)
 
 
-st.text(rb_comp_df['Year from Highschool'].dtypes)
+st.text(rb_comp_df['Year from Highschool'].unique())
 
 
 interactivePlot2()
