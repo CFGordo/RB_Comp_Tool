@@ -32,7 +32,7 @@ condition_one_value = "params.value >= 9"
 condition_two_value = "params.value < 5"
 
 formatter = {
-    'Season': ('Year', {'width': 50}),
+    'Season': ('Year', {'width': 40}),
     'Player ID': ('Player ID', {'width': 70}),
     'Team': ('Team', {'width': 55}),
     'Games Played': ('G', {'width': 5, 'cellStyle': agstyler.highlight(Color.RED_LIGHT.value,
