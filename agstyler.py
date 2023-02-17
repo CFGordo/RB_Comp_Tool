@@ -20,6 +20,7 @@ def draw_grid(
         formatter: dict = None,
         selection="multiple",
         use_checkbox=False,
+        pre_selected_rows: list = None,
         fit_columns=False,
         theme="streamlit",
         max_height: int = MAX_TABLE_HEIGHT,
@@ -47,7 +48,7 @@ def draw_grid(
     for latin_name, (cyr_name, style_dict) in formatter.items():
         gb.configure_column(latin_name, header_name=cyr_name, **style_dict)
 
-    gb.configure_selection(selection_mode=selection, use_checkbox=use_checkbox)
+    gb.configure_selection(selection_mode=selection, use_checkbox=use_checkbox, pre_selected_rows=pre_selected_rows)
 
     return AgGrid(
         df,
@@ -66,7 +67,7 @@ def draw_grid2(
         formatter: dict = None,
         selection="multiple",
         use_checkbox=False,
-        pre_selected_rows: list =None,
+        pre_selected_rows: list = None,
         fit_columns=False,
         theme="streamlit",
         max_height: int = MAX_TABLE_HEIGHT,

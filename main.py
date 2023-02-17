@@ -4,7 +4,7 @@ import streamlit as st
 import plotly.express as px
 import numpy as np
 import agstyler
-from agstyler import PINLEFT, PRECISION_TWO, draw_grid, draw_grid2
+from agstyler import PINLEFT, draw_grid
 from enum import Enum
 
 st.title("🏈 🏈 CFB RB Comp Tool 🏈 🏈")
@@ -79,13 +79,13 @@ riker = {"Criteria": ["Height", "Weight", "Rushing Efficiency", "Rushing Explosi
                          "Strongly", "*Instead of* Receiving Efficiency & Explosiveness",
                          "Yes, if *Not* using SP", "Yes, if *Not* using Tm Talent", "Post Draft Only"],
          "Notes": ["as listed by school", "as listed by school",
-                      "Success Rate with adjustments for Weight and Volume. Scaled and Capped at 20.",
-                      "Yards per Carry scewed heavily towards Big Runs (>=12yds) adjusted for Volume. Scaled and Capped at 20.",
-                      "Succes Rate by Target with adjustments for Volume. Scaled and Capped at 20.",
-                      "Yards per Reception scewed heavily towards Big Recs (>=12yds) adjusted for Volume. Scaled and "
-                      "Capped at 20.", "Max of Receiving Efficiency & Explosiveness", "per 247 Sports", "per Bill Connelly",
-                      "`Draft Cap isn't Everything; It's the Only thing.` - Vince Lombardi - Don't "
-                      "use it, coward."]}
+                   "Success Rate with adjustments for Weight and Volume. Scaled and Capped at 20.",
+                   "Yards per Carry scewed heavily towards Big Runs (>=12yds) adjusted for Volume. Scaled and Capped at 20.",
+                   "Succes Rate by Target with adjustments for Volume. Scaled and Capped at 20.",
+                   "Yards per Reception scewed heavily towards Big Recs (>=12yds) adjusted for Volume. Scaled and "
+                   "Capped at 20.", "Max of Receiving Efficiency & Explosiveness", "per 247 Sports", "per Bill Connelly",
+                   "`Draft Cap isn't Everything; It's the Only thing.` - Vince Lombardi - Don't "
+                   "use it, coward."]}
 
 criteria = pd.DataFrame(data=riker)
 fromage = {
@@ -95,7 +95,7 @@ fromage = {
 }
 st.text("")
 st.markdown("Select Criteria:")
-datas = draw_grid2(
+datas = draw_grid(
     criteria,
     formatter=fromage,
     fit_columns=False,
@@ -195,7 +195,7 @@ rb_comp_df['Comp Score'] = 100-rb_comp_df['comp_scor']
 
 formatter2 = {
     'Name': ('Name [select to compare]', {**PINLEFT, 'width': 50}),
-    'Comp Score': ('Score', {**PRECISION_TWO, 'width': 50}),
+    'Comp Score': ('Score', {'width': 50}),
     'Team': ('Team', {'width': 40}),
     'Season': ('Year', {'width': 45}),
     'Games Played': ('G', {'width': 5}),
@@ -352,13 +352,6 @@ def interactivePlot2():
                                                                                                         'size': 2,
                                                                                                         'color': 'gray'}).data[0])
     st.plotly_chart(plot)
-
-
-st.text(rb_comp_df[['Year from Highschool', 'NFL Draft Pick', 'Rush Success Rate', 'Succ Rushes perG', 'Big Rush Rate', 'Big Rushes perG',
-            'Big Rush Yards perG', 'Target Success Rate',  'Succ Targs perG', 'Big Rec Rate', 'Big Recs perG',
-            'Big Rec Yards perG', 'YTMRA perG', 'YTMPA perG', 'YTMA perG',
-            'Rush PPA perG', 'Rec PPA perG', 'Total PPA perG', 'PPA per Rush Att', 'PPA per Target',
-            'PPA per Opportunity']].dtypes)
 
 
 interactivePlot2()
