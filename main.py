@@ -35,7 +35,7 @@ formatter = {
     'Season': ('Year', {'width': 50}),
     'Player ID': ('Player ID', {'width': 70}),
     'Team': ('Team', {'width': 55}),
-    'Games Played': ('Games Played', {'width': 60, 'cellStyle': agstyler.highlight(Color.RED_LIGHT.value,
+    'Games Played': ('G', {'width': 5, 'cellStyle': agstyler.highlight(Color.RED_LIGHT.value,
                                                                                    condition_two_value)}),
     'Rushing Efficiency': ('Rushing Efficiency', {'width': 70, 'cellStyle': agstyler.highlight(Color.GREEN_LIGHT.value,
                                                                                                                 condition_one_value)}),
