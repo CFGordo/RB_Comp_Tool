@@ -319,17 +319,6 @@ if stit == 'PPA per Opportunity (version of EPA, per collegefootballdata.com)':
     stat = 'PPA per Opportunity'
 
 
-statable = cellary[['Year from Highschool', 'Name', 'Player ID', stat]]
-statable['Year from Highschool'] = statable['Year from Highschool'].astype(int)
-statable['Name'] = statable['Name'].astype(str)
-statable['Player ID'] = statable['Player ID'].astype(int)
-statable[stat] = statable[stat].astype(float)
-restatable = pd.pivot_table(statable, values=stat, index=['Name', 'Player ID'],
-                            columns=['Year from Highschool'], aggfunc=np.sum)
-restatable.reset_index(level=1, inplace=True)
-restatable.drop(columns={'Player ID'}, inplace=True)
-stable = restatable.transpose()
-
 mess = rb_comp_df.loc[rb_comp_df['Year from Highschool'] <= statable['Year from Highschool'].max()]
 mess.replace([np.inf, -np.inf], np.nan, inplace=True)
 messy = mess.loc[mess['Games Played'] >= 8]
@@ -338,7 +327,8 @@ messy = messy.loc[messy['Big Rush Rate'] < 0.4]
 
 
 def interactivePlot2():
-    plot = px.scatter(stable, x=None, y=None, template='simple_white')
+    plot = px.scatter(cellary.round(decimals=1), x='Year from Highschool', y=stat, color='Name',
+                      hover_data=['Games Played', 'Carries per Game', 'Targets per Game'], template='simple_white')
     plot.update_traces(connectgaps=True)
     plot.update_layout(
         xaxis_title="Year from Highschool",
