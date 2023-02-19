@@ -319,7 +319,7 @@ if stit == 'PPA per Opportunity (version of EPA, per collegefootballdata.com)':
     stat = 'PPA per Opportunity'
 
 
-mess = rb_comp_df.loc[rb_comp_df['Year from Highschool'] <= statable['Year from Highschool'].max()]
+mess = rb_comp_df.loc[rb_comp_df['Year from Highschool'] <= cellary['Year from Highschool'].max()]
 mess.replace([np.inf, -np.inf], np.nan, inplace=True)
 messy = mess.loc[mess['Games Played'] >= 8]
 messy = messy.loc[messy['Big Rec Rate'] < 0.6]
