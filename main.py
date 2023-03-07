@@ -256,12 +256,11 @@ cellar = pd.concat([cellar, cellz])
 cellar = cellar['Player ID'].drop_duplicates()
 cellary = pd.merge(cellar, rb_comp_df, on='Player ID', how='left')
 
-measures = ['Rush Success Rate', 'Succ Rushes perG', 'Big Rush Rate', 'Big Rushes perG',
-            'Big Rush Yards perG', 'Target Success Rate',  'Succ Targs perG', 'Big Rec Rate', 'Big Recs perG',
-            'Big Rec Yards perG', 'YTMRA perG', 'YTMPA perG', 'YTMA perG',
-            'Rush PPA perG', 'Rec PPA perG', 'Total PPA perG', 'PPA per Rush Att', 'PPA per Target',
-            'PPA per Opportunity']
 pleasures = ['Rush Success Rate (successful rush per attempt)', 'Successful Rushes per Game',
+             'Rush Success Rate on 1st & 10 and 2nd & 10', 'Successful Rushes per Game on 1st & 10 and 2nd & 10',
+             'Rush Success Rate on 3rd and 4th & Short (<=2yds to go)',
+             'Successful Rushes per Game on 3rd and 4th & Short (<=2yds to go)',
+             'Rush Success Rate with Goal to Go', 'Successful Rushes per Game with Goal to Go',
              'Big Rush Rate (rush >= 12yds per attempt)', 'Big Rushes per Game (rushes >= 12yds)',
              'Big Rush Yards per Game (yds on big rushes, not including first 12 yds)',
              'Target Success Rate (successful reception per target)',
@@ -317,6 +316,19 @@ if stit == 'PPA per Target(version of EPA, per collegefootballdata.com)':
     stat = 'PPA per Target'
 if stit == 'PPA per Opportunity (version of EPA, per collegefootballdata.com)':
     stat = 'PPA per Opportunity'
+if stit == 'Successful Rushes per Game on 1st & 10 and 2nd & 10':
+    stat = 'Succ Rushes pG 1|2 &10'
+if stit == 'Rush Success Rate on 1st & 10 and 2nd & 10':
+    stat = 'Rush Succ Rate 1|2 &10'
+if stit == 'Successful Rushes per Game on 3rd and 4th & Short (<=2yds to go)':
+    stat = 'Succ Rushes pG 3|4 &short'
+if stit == 'Rush Success Rate on 3rd and 4th & Short (<=2yds to go)':
+    stat = 'Rush Succ Rate 3|4 &short'
+if stit == 'Successful Rushes per Game with Goal to Go':
+    stat = 'Succ Rushes pG Goal to Go'
+if stit == 'Rush Success Rate with Goal to Go':
+    stat = 'Rush Succ Rate Goal to Go'
+
 
 
 mess = rb_comp_df.loc[rb_comp_df['Year from Highschool'] <= cellary['Year from Highschool'].max()]
