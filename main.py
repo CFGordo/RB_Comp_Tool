@@ -263,7 +263,7 @@ pleasures = ['Rush Success Rate (successful rush per attempt)', 'Successful Rush
              'Rush Success Rate with Goal to Go', 'Successful Rushes per Game with Goal to Go',
              'Big Rush Rate (rush >= 12yds per attempt)', 'Big Rushes per Game (rushes >= 12yds)',
              'Big Rush Yards per Game (yds on big rushes, not including first 12 yds)', 'Negative Rush Rate',
-             'Negative Rushes per Game', 'Rush Yards Lost per Game'
+             'Negative Rushes per Game', 'Rush Yards Lost per Game',
              'Target Share', 'Target Success Rate (successful reception per target)',
              'Successful Targets per Game', 'Big Reception Rate (reception >=12yds per reception)',
              'Big Rececptions per Game (receptions >= 12yds)',
