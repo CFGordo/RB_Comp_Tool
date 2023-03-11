@@ -262,8 +262,9 @@ pleasures = ['Rush Success Rate (successful rush per attempt)', 'Successful Rush
              'Successful Rushes per Game on 3rd and 4th & Short (<=2yds to go)',
              'Rush Success Rate with Goal to Go', 'Successful Rushes per Game with Goal to Go',
              'Big Rush Rate (rush >= 12yds per attempt)', 'Big Rushes per Game (rushes >= 12yds)',
-             'Big Rush Yards per Game (yds on big rushes, not including first 12 yds)',
-             'Target Success Rate (successful reception per target)',
+             'Big Rush Yards per Game (yds on big rushes, not including first 12 yds)', 'Negative Rush Rate',
+             'Negative Rushes per Game', 'Rush Yards Lost per Game'
+             'Target Share', 'Target Success Rate (successful reception per target)',
              'Successful Targets per Game', 'Big Reception Rate (reception >=12yds per reception)',
              'Big Rececptions per Game (receptions >= 12yds)',
              'Big Reception Yards per Game (yds on big receptions, not including first 12 yds)',
@@ -328,7 +329,14 @@ if stit == 'Successful Rushes per Game with Goal to Go':
     stat = 'Succ Rushes pG Goal to Go'
 if stit == 'Rush Success Rate with Goal to Go':
     stat = 'Rush Succ Rate Goal to Go'
-
+if stit == 'Target Share':
+    stat = 'Target Share'
+if stit == 'Negative Rush Rate':
+    stat = 'Negative Rush Rate'
+if stit == 'Negative Rushes per Game':
+    stat = 'Negative Rushes pG'
+if stit == 'Rush Yards Lost per Game':
+    stat = 'Rush Yards Lost pG'
 
 
 mess = rb_comp_df.loc[rb_comp_df['Year from Highschool'] <= cellary['Year from Highschool'].max()]
