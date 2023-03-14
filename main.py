@@ -348,7 +348,8 @@ messy = messy.loc[messy['Big Rush Rate'] < 0.4]
 
 def interactivePlot2():
     plot = px.scatter(cellary.round(decimals=2), x='Year from Highschool', y=stat, color='Name',
-                      hover_data=['Games Played', 'Carries per Game', 'Targets per Game'], template='simple_white')
+                      hover_data=['Season', 'Games Played', 'Carries per Game', 'Targets per Game'],
+                      template='simple_white')
     plot.update_traces(connectgaps=True)
     plot.update_layout(
         xaxis_title="Year from Highschool",
