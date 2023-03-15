@@ -65,16 +65,16 @@ select2 = pd.DataFrame(selected)
 if selected:
     player2 = int(select2['Player ID'])
     player3 = int(select2['Season'])
-    player_team = str(select2['Team'])
 else:
     player4 = player_comp_df.loc[player_comp_df['Season'] == player_comp_df['Season'].max()]
     player8 = player4['Season'].unique()
     player3 = int(player8)
     player4 = player4.loc[player4['Player ID'] == player4['Player ID'].min()]
     player2 = int(player4['Player ID'])
-    player_team = str(select2['Team'])
+
 playerSZN_comp_df = player_comp_df.loc[player_comp_df['Player ID'] == player2]
 playerSZN_comp_df = playerSZN_comp_df.loc[playerSZN_comp_df['Season'] == player3]
+player_team = str(playerSZN_comp_df['Team'].unique)
 
 riker = {"Criteria": ["Height", "Weight", "Rushing Efficiency", "Rushing Explosiveness", "Receiving Efficiency",
                       "Rec Explosiveness", "Receiving Best", "Team Talent", "Team SP Rating", "NFL Draft Position"],
