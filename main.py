@@ -228,7 +228,7 @@ nfl_comp = rb_comp_df.loc[rb_comp_df['Games Played'] >= games]
 
 team_only = st.checkbox('Same Team Only')
 if team_only:
-    nfl_comp = nfl_comp.loc[nfl_comp['Team'] == player_team]
+    nfl_comp = nfl_comp.loc[nfl_comp['Team'] == player_team.astype(str)]
 else:
     pass
 
