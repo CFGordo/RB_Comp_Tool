@@ -247,6 +247,8 @@ else:
                            'Receiving Efficiency', 'Rushing Explosiveness', 'Receiving Explosiveness', 'Team Talent',
                            'SP Rating', 'Draft Year', 'NFL Draft Pick', 'NFL PPR PPG', 'Player ID']]
 
+st.text(player_team)
+
 row_number = st.number_input('Number of Comps', min_value=0, value=11)
 data2 = draw_grid(
     nfl_comp2.loc[nfl_comp2['Games Played'] >= 4].sort_values(by=['Comp Score'], ascending=False).round(decimals=1).head(row_number),
