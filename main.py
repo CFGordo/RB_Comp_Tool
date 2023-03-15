@@ -222,6 +222,13 @@ formatter2 = {
 
 games = st.slider('Games Played Filter', 1, 15, 4)
 nfl_comp = rb_comp_df.loc[rb_comp_df['Games Played'] >= games]
+
+team_only = st.checkbox('Same Team Only')
+if team_only:
+    nfl_comp = nfl_comp.loc[nfl_comp['Team'] == playerSZN_comp_df['Team']]
+else:
+    pass
+
 nfl_only = st.checkbox('NFL Only')
 if nfl_only:
     nfl_comp = nfl_comp.loc[nfl_comp['NFL Draft Pick'] > 0]
@@ -237,6 +244,7 @@ else:
     nfl_comp2 = nfl_comp[['Name', 'Comp Score', 'Team', 'Season', 'Games Played', 'Height', 'Weight', 'Rushing Efficiency',
                            'Receiving Efficiency', 'Rushing Explosiveness', 'Receiving Explosiveness', 'Team Talent',
                            'SP Rating', 'Draft Year', 'NFL Draft Pick', 'NFL PPR PPG', 'Player ID']]
+
 row_number = st.number_input('Number of Comps', min_value=0, value=11)
 data2 = draw_grid(
     nfl_comp2.loc[nfl_comp2['Games Played'] >= 4].sort_values(by=['Comp Score'], ascending=False).round(decimals=1).head(row_number),
