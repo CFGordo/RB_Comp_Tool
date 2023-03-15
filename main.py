@@ -75,6 +75,7 @@ else:
 playerSZN_comp_df = player_comp_df.loc[player_comp_df['Player ID'] == player2]
 playerSZN_comp_df = playerSZN_comp_df.loc[playerSZN_comp_df['Season'] == player3]
 player_team = playerSZN_comp_df['Team']
+st.table(playerSZN_comp_df)
 
 riker = {"Criteria": ["Height", "Weight", "Rushing Efficiency", "Rushing Explosiveness", "Receiving Efficiency",
                       "Rec Explosiveness", "Receiving Best", "Team Talent", "Team SP Rating", "NFL Draft Position"],
