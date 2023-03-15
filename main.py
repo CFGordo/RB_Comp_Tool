@@ -126,6 +126,12 @@ Talent = (selections['Criteria'].eq('Team Talent')).any()
 SP = (selections['Criteria'].eq('Team SP Rating')).any()
 Pick = (selections['Criteria'].eq('NFL Draft Position')).any()
 
+team_only = st.checkbox('Same Team Only')
+if team_only:
+    rb_comp_df = rb_comp_df.loc[rb_comp_df['Team'] == player_team]
+else:
+    pass
+
 if Height:
      rb_comp_df['comp_height_comp'] = rb_comp_df['comp_height']-playerSZN_comp_df['comp_height'].max()
      rb_comp_df['comp_height_compass'] = np.where(rb_comp_df['comp_height_comp'] < 0, -1, 1)
@@ -224,12 +230,6 @@ formatter2 = {
 
 games = st.slider('Games Played Filter', 1, 15, 4)
 nfl_comp = rb_comp_df.loc[rb_comp_df['Games Played'] >= games]
-
-team_only = st.checkbox('Same Team Only')
-if team_only:
-    nfl_comp = nfl_comp.loc[nfl_comp['Team'] == player_team]
-else:
-    pass
 
 nfl_only = st.checkbox('NFL Only')
 if nfl_only:
