@@ -74,9 +74,7 @@ else:
 
 playerSZN_comp_df = player_comp_df.loc[player_comp_df['Player ID'] == player2]
 playerSZN_comp_df = playerSZN_comp_df.loc[playerSZN_comp_df['Season'] == player3]
-player_team = playerSZN_comp_df['Team']
-player_team = player_team.drop_duplicates()
-player_tm = player_team.astype(str)
+player_team = str(playerSZN_comp_df['Team'].values[0])
 
 riker = {"Criteria": ["Height", "Weight", "Rushing Efficiency", "Rushing Explosiveness", "Receiving Efficiency",
                       "Rec Explosiveness", "Receiving Best", "Team Talent", "Team SP Rating", "NFL Draft Position"],
@@ -229,7 +227,7 @@ nfl_comp = rb_comp_df.loc[rb_comp_df['Games Played'] >= games]
 
 team_only = st.checkbox('Same Team Only')
 if team_only:
-    nfl_comp = nfl_comp.loc[nfl_comp['Team'] == player_tm]
+    nfl_comp = nfl_comp.loc[nfl_comp['Team'] == player_team]
 else:
     pass
 
@@ -249,7 +247,7 @@ else:
                            'Receiving Efficiency', 'Rushing Explosiveness', 'Receiving Explosiveness', 'Team Talent',
                            'SP Rating', 'Draft Year', 'NFL Draft Pick', 'NFL PPR PPG', 'Player ID']]
 
-st.text(player_tm)
+st.text(player_team)
 
 row_number = st.number_input('Number of Comps', min_value=0, value=11)
 data2 = draw_grid(
