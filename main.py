@@ -76,7 +76,7 @@ playerSZN_comp_df = player_comp_df.loc[player_comp_df['Player ID'] == player2]
 playerSZN_comp_df = playerSZN_comp_df.loc[playerSZN_comp_df['Season'] == player3]
 player_team = playerSZN_comp_df['Team'].unique
 player_tm = str(player_team)
-
+st.text(playerSZN_comp_df.shape)
 riker = {"Criteria": ["Height", "Weight", "Rushing Efficiency", "Rushing Explosiveness", "Receiving Efficiency",
                       "Rec Explosiveness", "Receiving Best", "Team Talent", "Team SP Rating", "NFL Draft Position"],
          "Recomended?": ["Strongly", "Strongly", "Strongly", "Strongly", "Strongly",
@@ -248,7 +248,7 @@ else:
                            'Receiving Efficiency', 'Rushing Explosiveness', 'Receiving Explosiveness', 'Team Talent',
                            'SP Rating', 'Draft Year', 'NFL Draft Pick', 'NFL PPR PPG', 'Player ID']]
 
-st.text(player_tm.unique)
+st.text(player_tm)
 
 row_number = st.number_input('Number of Comps', min_value=0, value=11)
 data2 = draw_grid(
