@@ -248,7 +248,7 @@ else:
                            'Receiving Efficiency', 'Rushing Explosiveness', 'Receiving Explosiveness', 'Team Talent',
                            'SP Rating', 'Draft Year', 'NFL Draft Pick', 'NFL PPR PPG', 'Player ID']]
 
-st.text(player_team)
+st.text(player_tm)
 
 row_number = st.number_input('Number of Comps', min_value=0, value=11)
 data2 = draw_grid(
